@@ -27,8 +27,8 @@ const routes = [
     label: "Categories",
   },
   {
-    href: "#",
-    label: "Setting",
+    href: "/settings",
+    label: "Settings",
   },
 ];
 

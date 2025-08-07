@@ -1,7 +1,13 @@
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 import { Relation, relations } from "drizzle-orm";
-import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const accounts = pgTable("accounts", {
   id: text("id").primaryKey(),
@@ -58,4 +64,16 @@ export const transactionsRelations = relations(transactions, ({ one }) => ({
 
 export const insertTransactionSchema = createInsertSchema(transactions, {
   date: z.coerce.date(),
+});
+
+export const preferences = pgTable("preferences", {
+  id: varchar("id", { length: 255 }).primaryKey(),
+  userId: varchar("user_id", { length: 255 }).notNull(),
+  theme: text("theme").notNull(),
+  language: text("language").notNull(),
+});
+
+export const insertPreferenceSchema = z.object({
+  theme: z.enum(["light", "dark"]),
+  language: z.string().min(2).max(5),
 });

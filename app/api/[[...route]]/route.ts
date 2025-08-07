@@ -15,7 +15,7 @@ const routes = app
   .route("/accounts", accounts)
   .route("/categories", categories)
   .route("/transactions", transactions)
-  .route("/setting", setting);
+  .route("/settings", setting);
 
 export const GET = handle(app);
 export const POST = handle(app);

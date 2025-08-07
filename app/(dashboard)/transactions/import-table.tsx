@@ -38,10 +38,10 @@ export const ImportTable = ({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {body.map((row: string[], index) => (
-            <TableRow>
-              {row.map((cell, index) => (
-                <TableCell key={index}>{cell}</TableCell>
+          {body.map((row: string[], rowIndex) => (
+            <TableRow key={rowIndex}>
+              {row.map((cell, cellIndex) => (
+                <TableCell key={cellIndex}>{cell}</TableCell>
               ))}
             </TableRow>
           ))}
